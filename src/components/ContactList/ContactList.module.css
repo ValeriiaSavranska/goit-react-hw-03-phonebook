@@ -1,0 +1,18 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.text {
+  display: inline-block;
+  padding-right: 10px;
+  font-style: italic;
+}
+
+.btn {
+  padding: 5px;
+  background-color: rgb(248, 214, 182);
+  border: 2px solid #fff;
+  border-radius: 10px;
+}

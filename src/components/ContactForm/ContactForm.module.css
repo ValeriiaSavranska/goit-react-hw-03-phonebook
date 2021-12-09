@@ -1,0 +1,28 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  border: 2px solid #fff;
+  border-radius: 10px;
+}
+
+.label {
+  display: flex;
+  flex-direction: column;
+  font-weight: 500;
+}
+
+.input {
+  font-size: inherit;
+  padding-left: 10px;
+  border: 2px solid rgb(255, 31, 31);
+  border-radius: 5px;
+}
+
+.btn {
+  margin-top: 30px;
+  font-size: 14px;
+  padding: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}

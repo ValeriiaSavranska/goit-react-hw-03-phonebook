@@ -1,0 +1,12 @@
+.label {
+  font-weight: 500;
+  padding-bottom: 40px;
+}
+
+.input {
+  margin-left: 10px;
+  padding-left: 10px;
+  font-size: inherit;
+  border: 2px solid rgb(255, 31, 31);
+  border-radius: 5px;
+}
