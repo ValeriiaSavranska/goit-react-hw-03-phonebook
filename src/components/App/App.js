@@ -67,12 +67,16 @@ class App extends Component {
 
         <h2 className={styles.title}>Contacts</h2>
 
-        <Filter value={this.state.filter} onChange={this.changeFilter} />
+        {this.state.contacts.length > 1 && (
+          <Filter value={this.state.filter} onChange={this.changeFilter} />
+        )}
 
-        <ContactList
-          filteredContacts={filteredContacts}
-          onDeleteContacts={this.deleteContact}
-        />
+        {!!this.state.contacts.length && (
+          <ContactList
+            filteredContacts={filteredContacts}
+            onDeleteContacts={this.deleteContact}
+          />
+        )}
       </div>
     );
   }
