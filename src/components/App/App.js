@@ -2,20 +2,31 @@ import styles from './App.module.css';
 import ContactForm from '../ContactForm/ContactForm.jsx';
 import ContactList from '../ContactList/ContactList.jsx';
 import Filter from '../Filter/Filter.jsx';
+import * as storage from '../../services/localStorage';
 
 import { Component } from 'react';
 import { nanoid } from 'nanoid';
 
+const STORAGE_KEY = 'contacts';
+
 class App extends Component {
   state = {
-    contacts: [
-      { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
-      { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
-      { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
-      { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
-    ],
+    contacts: [],
     filter: '',
   };
+
+  componentDidMount() {
+    const savedContacts = storage.get(STORAGE_KEY);
+    if (savedContacts) {
+      this.setState({ contacts: savedContacts });
+    }
+  }
+
+  componentDidUpdate(prevState, prevProps) {
+    if (prevState.contacts !== this.state.contacts) {
+      storage.save(STORAGE_KEY, this.state.contacts);
+    }
+  }
 
   formSubmitHandler = ({ name, number }) => {
     const newContact = {
@@ -71,7 +82,7 @@ class App extends Component {
           <Filter value={this.state.filter} onChange={this.changeFilter} />
         )}
 
-        {!!this.state.contacts.length && (
+        {!!filteredContacts.length && (
           <ContactList
             filteredContacts={filteredContacts}
             onDeleteContacts={this.deleteContact}
